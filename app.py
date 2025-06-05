@@ -4,7 +4,7 @@ import torchvision.transforms as transforms
 import torch
 import timm
 
-# Disease info
+# Disease info (unchanged)
 disease_info = {
     "cataract": {
         "causes": [
@@ -135,11 +135,17 @@ css = """
 
 with gr.Blocks(css=css) as app:
     gr.Markdown("# 👁️ AI Eye Disease Detector")
-    gr.Markdown("Upload or capture an eye image for disease assessment")
+    gr.Markdown("📸 **Please capture an image using the webcam, then press 'Analyze'.**")
 
     with gr.Row():
         with gr.Column():
-            image_input = gr.Image(type="pil", label="Eye Image", sources=["upload", "webcam"])
+            image_input = gr.Image(
+                type="pil",
+                label="Eye Image",
+                sources=["webcam", "upload"],
+                tool="editor",
+                streaming=True
+            )
             submit_btn = gr.Button("Analyze", variant="primary")
 
         with gr.Column():
@@ -154,5 +160,7 @@ with gr.Blocks(css=css) as app:
         inputs=image_input,
         outputs=diagnosis_output
     )
+
+    gr.Markdown("---\n**👨‍💻 Developed by Damassoh Japhet Setonji**", elem_id="footer")
 
 app.launch(server_name="0.0.0.0", server_port=8080)
