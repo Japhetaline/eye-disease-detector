@@ -155,4 +155,4 @@ with gr.Blocks(css=css) as app:
         outputs=diagnosis_output
     )
 
-app.launch()
+app.launch(server_name="0.0.0.0", server_port=8080)
