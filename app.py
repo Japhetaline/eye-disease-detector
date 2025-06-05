@@ -84,7 +84,7 @@ disease_info = {
 
 # Load model
 model = timm.create_model('resnet18', pretrained=False, num_classes=4)
-model.load_state_dict(torch.load("eye_model.pth", map_location=torch.device('cpu')))
+model.load_state_dict(torch.load("/content/eye_model.pth", map_location=torch.device('cpu')))
 model.eval()
 
 # Class names
@@ -143,8 +143,7 @@ with gr.Blocks(css=css) as app:
                 type="pil",
                 label="Eye Image",
                 sources=["webcam", "upload"],
-                tool="editor",
-                streaming=True
+                
             )
             submit_btn = gr.Button("Analyze", variant="primary")
 
