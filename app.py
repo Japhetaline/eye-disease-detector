@@ -85,7 +85,7 @@ disease_info = {
 
 # Load model
 model = timm.create_model('resnet18', pretrained=False, num_classes=4)
-model.load_state_dict(torch.load("eye_model.pth", map_location=torch.device('cpu')))
+model.load_state_dict(torch.load("best_eye_model.pth", map_location=torch.device('cpu')))
 model.eval()
 
 # Class names
