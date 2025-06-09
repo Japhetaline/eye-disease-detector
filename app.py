@@ -3,6 +3,7 @@ from PIL import Image
 import torchvision.transforms as transforms
 import torch
 import timm
+import os
 
 # Disease info (unchanged)
 disease_info = {
@@ -162,4 +163,7 @@ with gr.Blocks(css=css) as app:
 
     gr.Markdown("---\n**👨‍💻 Developed by Damassoh Japhet Setonji**", elem_id="footer")
 
-app.launch(server_name="0.0.0.0", server_port=8080)
+
+port = int(os.environ.get("PORT", 7860))  # fallback for local run
+
+app.launch(server_name="0.0.0.0", server_port=port)
